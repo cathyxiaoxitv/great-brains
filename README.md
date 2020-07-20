@@ -15,3 +15,9 @@ yarn build
     "build":" rm -rf dist; parcel build src/index.html --no-minify --public-url ./"
   }
 ``
+# 注意点
+不知为何我修改后会出现取不到icon的情况，经过多次测试，解决方案就是
+``
+<script src="http://at.alicdn.com/t/font_1951378_gdeug8uqkoq.js"></script>
+``
+更新一下src前面的http前缀，然后再次yarn build。
