@@ -118,6 +118,27 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 
   return newRequire;
 })({"epB2":[function(require,module,exports) {
+window.onload = function () {
+  document.addEventListener('touchstart', function (event) {
+    if (event.touches.length > 1) {
+      event.preventDefault();
+    }
+  }, {
+    passive: false // 关闭被动监听
+
+  });
+  var lastTouchEnd = 0;
+  document.addEventListener('touchend', function (event) {
+    var now = new Date().getTime();
+
+    if (now - lastTouchEnd <= 300) {
+      event.preventDefault();
+    }
+
+    lastTouchEnd = now;
+  }, false);
+};
+
 var $siteList = $('.siteList'); //需要放前面，hashMap.forEach里无法访问到后面的变量
 
 var $lastLi = $siteList.find('li.last'); //这样子写是不是更加具体？
@@ -206,4 +227,4 @@ $(document).on('keypress', function (e) {
   }
 });
 },{}]},{},["epB2"], null)
-//# sourceMappingURL=main.fcae603c.js.map
+//# sourceMappingURL=main.36e3120d.js.map

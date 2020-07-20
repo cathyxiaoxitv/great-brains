@@ -1,3 +1,20 @@
+window.onload = function () {
+    document.addEventListener('touchstart', function (event) {
+        if (event.touches.length > 1) {
+            event.preventDefault();
+        }
+    }, {
+        passive: false  // 关闭被动监听
+    });
+    var lastTouchEnd = 0;
+    document.addEventListener('touchend', function (event) {
+        var now = (new Date()).getTime();
+        if (now - lastTouchEnd <= 300) {
+            event.preventDefault();
+        }
+        lastTouchEnd = now;
+    }, false);
+};
 const $siteList = $('.siteList')//需要放前面，hashMap.forEach里无法访问到后面的变量
 const $lastLi = $siteList.find('li.last')//这样子写是不是更加具体？
 const x = localStorage.getItem('x')//把储存了hashMap的localStorage读取出来，是字符串，需要转成对象
