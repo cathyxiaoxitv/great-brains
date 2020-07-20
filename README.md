@@ -8,7 +8,7 @@
 ``
 yarn build
 ``
-# 如何做到一键盘build的
+# 如何做到一键build的
 在`package.json`里写一个`script`
 
 ``"scripts": {
